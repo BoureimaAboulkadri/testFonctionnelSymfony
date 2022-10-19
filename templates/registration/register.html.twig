@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+
+
+
+
+{% block body %}
+    <div class="form-signin w-100 m-auto album py-5">
+        <div class="container">
+            <h1 class="h3 mb-3 fw-normal">Register</h1>
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email, {'attr': {'class': 'form-floating'}}) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container">
+                        <a class="navbar-brand" href="{{ path('homepage') }}">Testing WebApp</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('homepage') }}">Home</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                            {% if app.user %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Settings
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ path('app_article_index') }}">Admin Article</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_login') }}">login</a>
+                                </li>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        {% endblock %}
+        <main>
+            <div class="py-5 container">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+        {% block footer %}{% endblock %}
+    </body>
+</html>
+
+
+

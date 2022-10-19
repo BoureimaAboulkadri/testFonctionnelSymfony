@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title|length > 50 ? article.title|slice(0, 50) ~ '...' : article.title }}</td>
+                <td>{{ article.description|length > 75 ? article.description|slice(0, 75) ~ '...' : article.description }}</td>
+                <td>{{ article.author }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+                    {% if (is_granted("ROLE_USER", article)) %}
+                        <a class="btn btn-success" href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                    {% else %}
+                        <a class="btn btn-secondary disabled" href="">edit</a>
+                    {% endif %}
+                    {{ include('article/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_article_new') }}">Create new</a>
+{% endblock %}

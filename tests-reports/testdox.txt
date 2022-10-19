@@ -1,0 +1,3 @@
+Security Controller Panther (App\Tests\SecurityControllerPanther)
+ [x] Login logout
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="App\Tests\SecurityControllerPantherTest" file="/var/www/html/tests/Panther/SecurityControllerPantherTest.php" tests="1" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="8.036767">
+    <testcase name="testLoginLogout" class="App\Tests\SecurityControllerPantherTest" classname="App.Tests.SecurityControllerPantherTest" file="/var/www/html/tests/Panther/SecurityControllerPantherTest.php" line="9" assertions="7" time="8.036767"/>
+  </testsuite>
+</testsuites>
